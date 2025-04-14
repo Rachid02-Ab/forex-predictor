@@ -13,7 +13,7 @@ Ce projet utilise un modèle de Deep Learning (LSTM) pour prédire le **prix de 
 
 ###  Cloner le projet
 
--- git clone https://github.com/ton-profil/forex-predictor.git
+-- git clone https://github.com/Rachid02-Ab/forex-predictor.git
 -- cd FINANCIAL-PRICE-PREDICTOR
 
 ### Installer les dépendances
