@@ -1,0 +1,44 @@
+name: CI/CD - Forex Price Predictor
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-train-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy scikit-learn tensorflow fastapi uvicorn joblib streamlit openpyxl
+
+      - name: 🧪 Run model training
+        run: |
+          python app/train.py
+        continue-on-error: false
+
+      - name: ✅ Check if model was created
+        run: |
+          test -f model/model.h5 && echo "✅ Model found"
+          test -f model/scaler.pkl && echo "✅ Scaler found"
+
+      - name: 🚀 Upload trained model (optional)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: |
+            model/model.h5
+            model/scaler.pkl
