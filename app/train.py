@@ -8,7 +8,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import joblib
 
 # Charger les données
-df = pd.read_excel("data/dataForex.xlsx")
+df = pd.read_excel("../data/dataForex.xlsx")
 
 # Garder les colonnes nécessaires
 df = df[['Open', 'High', 'Low', 'Moy2W', 'MoyMonth', 'J (Close)']]
@@ -44,9 +44,9 @@ model.fit(X, y, epochs=20, batch_size=16, verbose=1, callbacks=[EarlyStopping(pa
 
 # Sauvegarde du modèle
 os.makedirs("model", exist_ok=True)
-model.save("model/model.h5")
+model.save("../model/model.h5")
 
 # Sauvegarde du scaler
-joblib.dump(scaler, "model/scaler.pkl")
+joblib.dump(scaler, "../model/scaler.pkl")
 
 print("✅ Modèle entraîné et sauvegardé dans le dossier /model")

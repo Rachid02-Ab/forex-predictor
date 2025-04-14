@@ -4,8 +4,8 @@ import joblib
 from tensorflow.keras.models import load_model
 
 # Charger modèle et scaler
-model = load_model("model/model.h5")
-scaler = joblib.load("model/scaler.pkl")
+model = load_model("../model/model.h5")
+scaler = joblib.load("../model/scaler.pkl")
 
 st.title("💹 Prédiction du prix de clôture Forex (LSTM)")
 st.markdown("Prédiction basée sur les données d'hier : `Open`, `High`, `Low`, `Moy2W`, `MoyMonth`")
