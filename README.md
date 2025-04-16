@@ -27,3 +27,18 @@ LSTM
 FastAPI
 Streamlit
 Pandas, NumPy, Scikit-learn
+
+## ⚙️ CI/CD avec GitHub Actions
+
+Ce projet inclut une **pipeline CI/CD** automatisée grâce à **GitHub Actions**.  
+Elle se déclenche à chaque `push` ou `pull request` sur la branche `main`.
+
+### 🔁 Étapes de la pipeline :
+
+- 🔄 **Checkout** du dépôt Git.  
+- 🐍 **Installation de Python 3.12.**  
+- 📦 **Installation des dépendances** du projet.  
+- 🧠 **Exécution automatique de l'entraînement du modèle** via `train.py`.  
+- ✅ **Vérification de la création du modèle** (`model.h5`) et du scaler (`scaler.pkl`).  
+- 🚀 **Upload** du modèle entraîné en tant qu’artefact GitHub *(optionnel)*.
+
